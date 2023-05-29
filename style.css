@@ -14,11 +14,11 @@
 header {
     position: sticky;
     top: 0;
-    width: 100%;
-    z-index: 100;
+    width: 1992px;
+    /* z-index: 100; */
     background-color: cornflowerblue;
-    padding: 10px;
-    margin-right: 10px;
+    padding: 15px;
+    margin: 10px 10px 20px 10px;
 }
 
 .heading1 {
@@ -55,7 +55,7 @@ nav ul li a:hover {
     position: relative;
     max-width: 100%;
     margin: 1px 1px 1px 1px;
-    border-radius: 20px;
+    border-radius: 50px;
 }
 
 h1 {
@@ -153,30 +153,36 @@ h1 {
 .mySlides {
     display: none;
     width: 100%;
-    height: 600px;
+    height: 850px;
+    border-radius: 5px;
 }
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(4, 2fr);
-    grid-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1px;
+    margin-left: 5px;
+}
+
+.gallery img {
+    width: 500px;
+    height: 200px;
+    cursor: pointer;
 }
 
 .galleryheader {
     border: 2px solid black;
     background-color: crimson;
+    padding: 20px;
+    color: white;
     font-size: xx-large;
-    margin-top: 500px;
+    margin-top: 5px;
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+    margin: 5px 5px;
 }
 
-.gallery img {
-    width: 100%;
-    height: auto;
-    cursor: pointer;
-}
 
 .larger-image {
     display: none;
@@ -331,32 +337,6 @@ button:hover {
     margin-bottom: 20px;
 }
 
-#eventpage {
-    border: 2px solid black;
-    font-size: x-large;
-    text-align: center;
-    margin-top: 200px;
-    padding: 10px;
-    background-color: darkorchid;
-}
-
-#event-form input,
-#event-form textarea {
-    display: block;
-    margin-bottom: 10px;
-    width: 500px;
-    height: 20px;
-    margin-left: 20vh;
-    /* background-color: aqua; */
-}
-
-.eventConatainer {
-    width: 900px;
-    height: 600px;
-    background-color: olivedrab;
-    margin-left: 60vh;
-}
-
 .formHeading {
     font-size: 30px;
     margin-left: 30vh;
@@ -369,59 +349,27 @@ button:hover {
     margin-top: 5vh;
 }
 
-#event-list {
-    margin-top: 20px;
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-}
-
-.event {
-    width: 300px;
-    height: 300px;
-    margin-right: 10px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.event-image {
+table {
+    border-collapse: collapse;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
 }
 
-.event-details {
-    padding: 10px;
-    background-color: #f1f1f1;
+th,
+td {
+    text-align: left;
+    padding: 8px;
 }
 
-.event-details h3 {
-    margin-top: 0;
+th {
+    background-color: #f2f2f2;
 }
 
-.event-details p {
-    margin: 0;
+tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-.scroll-button {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 999;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    cursor: pointer;
-}
-
-.scroll-button-left {
-    left: 10px;
-}
-
-.scroll-button-right {
-    right: 10px;
+tr:hover {
+    background-color: #ddd;
 }
 
 footer {
@@ -431,4 +379,5 @@ footer {
     text-align: center;
     font-size: larger;
     margin-right: 5px;
+    margin-top: 200px;
 }

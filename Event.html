@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        #detailsContainer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        #imageContainer {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            gap: 1px;
+        }
+
+        #selectedImage {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .scroll-button {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .scroll-button-left {
+            left: 10px;
+        }
+
+        .scroll-button-right {
+            right: 10px;
+        }
+
+        .scroll-button-right {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar background">
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Images.html">Images</a></li>
+                <li><a href="Event.html">Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <body>
+        <table id="eventTable">
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically generated using JavaScript -->
+
+            </tbody>
+        </table>
+
+        <div id="detailsContainer">
+            <div id="imageContainer">
+                <img id="selectedImage" src="./image1.jpg" alt="Selected Image">
+                <img id="selectedImage" src="./image2.jpg" alt="Selected Image">
+                <img id="selectedImage" src="./image3.jpg" alt="Selected Image">
+                <img id="selectedImage" src="./image4.jpg" alt="Selected Image">
+                <img id="selectedImage" src="./image4.jpg" alt="Selected Image">
+            </div>
+            <div class="scroll-button scroll-button-left" id="scrollLeft">&lt;</div>
+            <div class="scroll-button scroll-button-right" id="scrollRight">&gt;</div>
+        </div>
+
+        <script src="./script.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Sample event data
+                var events = [
+                    { event: "The Sri Guru Gita lecture by Rishika Abirami", date: "June 30, 2023", image: "../IMAGES/image1.jpg" },
+                    { event: "Satsang with Swamini Vishwamohini", date: "Jun 02, 2023", image: "../IMAGES/image2.jpg" },
+                    { event: "OM Chanting Circles", date: "Jun 04, 2023", image: "../IMAGES/image3.jpg" },
+                    { event: "Bhakti Knowledge भक्ति ज्ञान व्याख्यान (Bhagavad Gita, Hinduism, Vaishnavism, and more)", date: "Jun 04, 2023", image: "../IMAGES/image4.jpg" },
+                    { event: "The Sri Guru Gita lecture by Rishika Abirami", date: "Jun 06, 2023", image: "../IMAGES/image5.jpg" },
+                    { event: "Satsang with Swamini Vishwamohini", date: "Jun 09, 2023", image: "../IMAGES/image6.jpg" },
+                    { event: "Guruji’s Jayanti 2023 in Vrindavan", date: "Jun 10, 2023", image: "../IMAGES/image5.jpg" },
+                    { event: "OM Chanting Circles", date: "Jun 11, 2023", image: "../IMAGES/image5.jpg" },
+                    { event: "Bhakti Knowledge भक्ति ज्ञान व्याख्यान (Bhagavad Gita, Hinduism, Vaishnavism, and more)", date: "Jun 11, 2023", image: "../IMAGES/image2.jpg" },
+                    { event: "Guruji’s Jayanti  Bengaluru", date: "Jun 13, 2023", image: "../IMAGES/image1.jpg" },
+                    { event: "The Sri Guru Gita lecture by Rishika Abirami", date: "Jun 13, 2023", image: "../IMAGES/image3.jpg" },
+                    { event: "Satsang with Swamini Vishwamohini", date: "Jun 16, 2023", image: "../IMAGES/image6.jpg" }
+
+                    // Add more event records here
+                ];
+    
+                // Get the table body
+                var tableBody = document.querySelector("#eventTable tbody");
+    
+                // Generate table rows
+                events.forEach(function (event) {
+                    var row = document.createElement("tr");
+                    var eventCell = document.createElement("td");
+                    var dateCell = document.createElement("td");
+    
+                    eventCell.textContent = event.event;
+                    dateCell.textContent = event.date;
+    
+                    row.appendChild(eventCell);
+                    row.appendChild(dateCell);
+    
+                    tableBody.appendChild(row);
+    
+                    // Attach click event listener to each row
+                    row.addEventListener("click", function () {
+                        // Update the selected image
+                        var selectedImage = document.getElementById("selectedImage");
+                        selectedImage.src = event.image;
+    
+                        // Remove active class from all rows
+                        var rows = document.querySelectorAll("#eventTable tbody tr");
+                        rows.forEach(function (row) {
+                            row.classList.remove("active");
+                        });
+    
+                        // Add active class to the clicked row
+                        row.classList.add("active");
+                    });
+                });
+    
+                // Scroll left and right functionality
+                var scrollLeftButton = document.getElementById("scrollLeft");
+                var scrollRightButton = document.getElementById("scrollRight");
+                var imageContainer = document.getElementById("imageContainer");
+    
+                scrollLeftButton.addEventListener("click", function () {
+                    imageContainer.scrollBy({
+                        left: -100,
+                        behavior: "smooth"
+                    });
+                });
+    
+                scrollRightButton.addEventListener("click", function () {
+                    imageContainer.scrollBy({
+                        left: 100,
+                        behavior: "smooth"
+                    });
+                });
+            });
+    
+        </script>
+        
+    </body>
+
+</html>
